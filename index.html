@@ -1,16 +1,234 @@
 <!DOCTYPE html>
+<!-- WEDDING RSVP. Photos live in /images (hero.jpg, photo-1.jpg to photo-12.jpg). -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Clover &amp; Oakley</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#07060A">
+<title>Clover &amp; Oakley · November 13, 2026</title>
+<meta name="description" content="Clover and Oakley are getting married on November 13, 2026. Let us know if you can join us.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js")</script>
 <style>
-  body { background: #07060A; color: #ECE7F1; font-family: sans-serif; text-align: center; padding-top: 20vh; }
-  h1 { font-size: 3rem; margin-bottom: 0.5rem; }
-  p { color: #B0A8BA; font-size: 1.2rem; }
+:root{--black:#07060A;--purple:#2A1237;--band:#170B1E;--pline:#8E6FB5;--green:#0E241C;--gline:#6F8F7F;--ink:#ECE7F1;--muted:#B0A8BA;--lilac:#C9B3E3;--serif:"Bodoni Moda",Didot,"Bodoni 72",Georgia,serif;--sans:"Jost",Futura,system-ui,-apple-system,"Segoe UI",sans-serif}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--black);color:var(--ink);font:400 1.0625rem/1.7 var(--sans);-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+h1,h2{font-family:var(--serif);font-weight:400}
+:focus-visible{outline:3px solid var(--lilac);outline-offset:3px}
+.wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
+section,header{padding-block:clamp(3.5rem,8vw,6rem)}
+.grid2{display:grid;gap:3rem;align-items:center}
+h2{font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.05}
+.lead{margin-top:1.25rem;max-width:30rem;color:var(--muted);font-size:1.125rem}
+
+/* Hero */
+.hero{padding-block:clamp(2.5rem,6vw,4.5rem) clamp(3rem,6vw,5rem);overflow:hidden}
+@media(min-width:860px){.hero .grid2{grid-template-columns:1.4fr 1fr;gap:4rem}}
+.names{font-size:clamp(3.4rem,10vw,7.5rem);line-height:.95;letter-spacing:-.02em}
+.names span{display:block}
+.names .b{padding-left:.8em;font-style:italic}
+.date{display:inline-block;margin-top:clamp(1.5rem,3vw,2.25rem);padding-top:1rem;border-top:1px solid var(--pline);font:italic 400 clamp(1.5rem,3vw,2rem)/1.2 var(--serif);color:var(--lilac)}
+
+/* Buttons */
+.btn{font:500 1rem/1 var(--sans);display:inline-block;padding:1em 2em;border:1px solid transparent;border-radius:2px;background:var(--ink);color:#0A0710;text-decoration:none;cursor:pointer;transition:background-color .2s}
+.btn:hover{background:#fff}
+.btn:disabled{background:#6B6573;cursor:not-allowed}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--gline)}
+.hero .btn{margin-top:2rem}
+.fab{position:fixed;right:max(1rem,env(safe-area-inset-right));bottom:max(1rem,env(safe-area-inset-bottom));z-index:5;box-shadow:0 10px 30px rgba(0,0,0,.5);opacity:0;transform:translateY(20px) scale(.9);pointer-events:none;transition:opacity .35s,transform .45s cubic-bezier(.2,1.4,.4,1),background-color .2s}
+.fab.show{opacity:1;transform:none;pointer-events:auto}
+
+/* Pointed-arch photo frame */
+.frame{position:relative;aspect-ratio:3/4;margin:14px;width:calc(100% - 28px)}
+.arch{position:absolute;inset:0;clip-path:url(#ogive);background:linear-gradient(to top,#12301F,var(--purple) 70%)}
+.arch img{width:100%;height:100%;object-fit:cover;display:block}
+.line{position:absolute;inset:-14px;width:calc(100% + 28px);height:calc(100% + 28px);fill:none;stroke:var(--pline);stroke-width:1}
+.hero .frame{width:min(100% - 28px,340px);justify-self:center}
+
+/* RSVP */
+.rsvp{background:var(--green)}
+@media(min-width:860px){.rsvp .grid2{grid-template-columns:1fr 1.1fr;gap:5rem;align-items:start}}
+.rsvp .lead{max-width:24rem}
+.side{display:none}
+@media(min-width:860px){.side{display:block;width:230px;margin-top:2.5rem}}
+.card{background:rgba(7,6,10,.35);border:1px solid var(--gline);border-radius:2px;padding:clamp(1.25rem,4vw,2.25rem)}
+.field{margin-bottom:1.25rem}
+.row{display:grid;gap:0 1rem}
+@media(min-width:520px){.row{grid-template-columns:1fr 1fr}}
+label,legend{display:block;font-size:.95rem;margin-bottom:.45rem;padding:0}
+.opt{color:var(--muted)}
+input[type=text],input[type=email],input[type=tel]{width:100%;padding:.9rem 1rem;font:inherit;color:var(--ink);background:#07110D;border:1px solid var(--gline);border-radius:2px}
+input[type=text]:focus,input[type=email]:focus,input[type=tel]:focus{outline:2px solid var(--lilac);outline-offset:0;border-color:var(--lilac)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+fieldset{border:0;padding:0;margin:0 0 1.5rem;min-width:0}
+.choices{display:grid;gap:.75rem}
+@media(min-width:480px){.choices{grid-template-columns:1fr 1fr}}
+.choice{position:relative;display:block;margin:0}
+.choice input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.choice span{display:block;padding:1rem 1.1rem;border:1px solid var(--gline);border-radius:2px;transition:background-color .2s,border-color .2s}
+.choice input:focus-visible+span{outline:3px solid var(--lilac);outline-offset:3px}
+.yes input:checked+span{background:#1F5A43;border-color:#8FD1B0}
+.no input:checked+span{background:#4B2670;border-color:#B99BE0}
+.error{margin:0 0 1.25rem;padding:.8rem 1rem;border-left:3px solid #E08A7B;background:#2A1412;font-size:.95rem}
+form .btn{width:100%}
+.thanks h3{font:400 clamp(1.9rem,4vw,2.6rem)/1.15 var(--serif);outline:none}
+.thanks p{margin:.75rem 0 1.75rem;color:var(--muted)}
+
+/* Story */
+@media(min-width:860px){.story .grid2{grid-template-columns:1fr 1.1fr;gap:5rem}}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.pair .frame:last-child{margin-top:3.5rem}
+
+/* Photo strip */
+.more{background:var(--band);overflow:hidden}
+.head{display:flex;justify-content:space-between;align-items:end;gap:1rem;margin-bottom:2rem}
+.arrows{display:flex;gap:.6rem}
+.arrow{width:46px;height:46px;border-radius:50%;border:1px solid var(--pline);background:transparent;color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:background-color .2s}
+.arrow:hover:not(:disabled){background:rgba(255,255,255,.1)}
+.arrow:disabled{opacity:.35;cursor:default}
+.arrow svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.strip{--pad:max(1.25rem,(100% - 1120px)/2);display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding-inline:var(--pad);scroll-padding-inline:var(--pad);scrollbar-width:none}
+.strip::-webkit-scrollbar{display:none}
+.strip img{flex:none;display:block;height:clamp(300px,52vw,500px);width:auto;border-radius:2px;scroll-snap-align:start}
+
+footer{padding:2.5rem 1.25rem 5rem;text-align:center;color:var(--muted);font-size:.95rem;line-height:1.8}
+
+/* Motion: images and buttons pop in on scroll */
+@media(prefers-reduced-motion:no-preference){
+.js [data-r]{opacity:0;transform:translateY(26px) scale(.95)}
+.js [data-r=text]{transform:translateY(18px)}
+.js [data-r].in{opacity:1;transform:none;transition:opacity .8s ease var(--d,0s),transform .9s cubic-bezier(.2,1.15,.35,1) var(--d,0s)}
+.names span,.date,.lead,.hero .frame,.hero .btn{animation:rise 1s cubic-bezier(.2,.7,.2,1) both}
+.names .b{animation-delay:.15s}.date{animation-delay:.3s}.hero .lead{animation-delay:.4s}.hero .frame{animation-delay:.45s}.hero .btn{animation-delay:.6s}
+@keyframes rise{from{opacity:0;transform:translateY(.15em)}}
+}
 </style>
 </head>
 <body>
-  <h1>Clover &amp; Oakley</h1>
-  <p>Our wedding site is updating. Check back in just a moment!</p>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<clipPath id="ogive" clipPathUnits="objectBoundingBox"><path d="M0,1 V0.45 C0,0.22 0.3,0.1 0.5,0 C0.7,0.1 1,0.22 1,0.45 V1 Z"/></clipPath>
+<path id="ogiveLine" d="M0,1 V0.45 C0,0.22 0.3,0.1 0.5,0 C0.7,0.1 1,0.22 1,0.45 V1" vector-effect="non-scaling-stroke"/>
+</defs></svg>
+
+<header class="hero"><div class="wrap grid2">
+  <div>
+    <h1 class="names"><span>Clover</span><span class="b">&amp; Oakley</span></h1>
+    <p class="date"><time datetime="2026-11-13">November 13, 2026</time></p>
+    <p class="lead">We’re getting married, and we’d love to celebrate with you. Please let us know if you can make it.</p>
+    <a class="btn" href="#rsvp">RSVP</a>
+  </div>
+  <div class="frame"><div class="arch"><img data-src="images/hero.jpg" alt=""></div><svg class="line" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true"><use href="#ogiveLine"/></svg></div>
+</div></header>
+
+<section class="rsvp" id="rsvp" aria-labelledby="rt"><div class="wrap grid2">
+  <div data-r="text">
+    <h2 id="rt">Will you be there?</h2>
+    <p class="lead">Only your name is required. Add an email or phone number if you’d like us to be able to reach you.</p>
+    <div class="frame side"><div class="arch"><img data-src="images/photo-1.jpg" alt=""></div><svg class="line" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true"><use href="#ogiveLine"/></svg></div>
+  </div>
+  <div class="card" data-r="text" style="--d:.12s">
+    <form id="rsvpForm" action="https://formspree.io/f/xrppdvey" method="POST">
+      <div class="field"><label for="n">Your name(s)</label><input type="text" id="n" name="name" autocomplete="name" required></div>
+      <div class="row">
+        <div class="field"><label for="e">Email <span class="opt">(optional)</span></label><input type="email" id="e" name="email" autocomplete="email"></div>
+        <div class="field"><label for="p">Phone <span class="opt">(optional)</span></label><input type="tel" id="p" name="phone" autocomplete="tel" inputmode="tel"></div>
+      </div>
+      <fieldset><legend>Can you make it?</legend><div class="choices">
+        <label class="choice yes"><input type="radio" name="attending" value="Yes" required><span>Yes, I’ll be there</span></label>
+        <label class="choice no"><input type="radio" name="attending" value="No"><span>No, I can’t make it</span></label>
+      </div></fieldset>
+      <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="hidden" name="_subject" id="subj" value="New RSVP">
+      <p class="error" id="formError" role="alert" hidden></p>
+      <button class="btn" type="submit" id="submitBtn">Send RSVP</button>
+    </form>
+    <div class="thanks" id="thanks" hidden>
+      <h3 id="tt" tabindex="-1"></h3><p id="tb"></p>
+      <button class="btn ghost" type="button" id="change">Change my answer</button>
+    </div>
+  </div>
+</div></section>
+
+<section class="story" aria-labelledby="st"><div class="wrap grid2">
+  <div data-r="text">
+    <h2 id="st">Our engagement</h2>
+    <p class="lead">We got engaged out in the forest, among moss, ferns and very tall trees. These are a few of our favorite moments from that day.</p>
+  </div>
+  <div class="pair">
+    <div class="frame" data-r style="--d:.1s"><div class="arch"><img data-src="images/photo-2.jpg" alt=""></div><svg class="line" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true"><use href="#ogiveLine"/></svg></div>
+    <div class="frame" data-r style="--d:.25s"><div class="arch"><img data-src="images/photo-5.jpg" alt=""></div><svg class="line" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true"><use href="#ogiveLine"/></svg></div>
+  </div>
+</div></section>
+
+<section class="more" aria-labelledby="mt">
+  <div class="wrap head">
+    <h2 id="mt">More from that day</h2>
+    <div class="arrows">
+      <button class="arrow" id="prev" type="button" aria-label="Previous photos" data-r><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="arrow" id="next" type="button" aria-label="Next photos" data-r style="--d:.1s"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+  </div>
+  <div class="strip" id="strip" tabindex="0" aria-label="Photo gallery, scroll sideways" data-r></div>
+</section>
+
+<footer>Clover &amp; Oakley, November 13, 2026<br>We can’t wait to celebrate with you.</footer>
+<a class="btn fab" id="fab" href="#rsvp" tabindex="-1" aria-hidden="true">RSVP</a>
+
+<script>
+(()=>{
+const $=id=>document.getElementById(id);
+document.querySelectorAll("img[data-src]").forEach(i=>{i.addEventListener("error",()=>i.remove());i.src=i.dataset.src});
+const strip=$("strip"),prev=$("prev"),next=$("next");
+const sync=()=>{prev.disabled=strip.scrollLeft<4;next.disabled=strip.scrollLeft+strip.clientWidth>=strip.scrollWidth-4};
+const go=d=>strip.scrollBy({left:d*strip.clientWidth*.8,behavior:"smooth"});
+prev.onclick=()=>go(-1);next.onclick=()=>go(1);strip.addEventListener("scroll",sync,{passive:true});
+Promise.all([3,4,6,7,8,9,10,11,12].map(n=>new Promise(r=>{const im=new Image();im.alt="";im.onload=()=>r(im);im.onerror=()=>r(null);im.src=`images/photo-${n}.jpg`}))).then(a=>{
+  const f=a.filter(Boolean);
+  if(!f.length){strip.closest("section").hidden=true;return}
+  strip.append(...f);sync();
+});
+
+const els=document.querySelectorAll("[data-r]");
+if("IntersectionObserver" in window){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.15,rootMargin:"0px 0px -6% 0px"});
+  els.forEach(e=>io.observe(e));
+}else els.forEach(e=>e.classList.add("in"));
+
+const fab=$("fab");let seen=true,done=false;
+const upd=()=>{const s=!seen&&scrollY>300&&!done;fab.classList.toggle("show",s);fab.tabIndex=s?0:-1;fab.setAttribute("aria-hidden",String(!s))};
+if("IntersectionObserver" in window)new IntersectionObserver(([e])=>{seen=e.isIntersecting;upd()}).observe($("rsvp"));
+addEventListener("scroll",upd,{passive:true});
+
+const form=$("rsvpForm"),thanks=$("thanks"),err=$("formError"),btn=$("submitBtn"),nm=$("n");
+const showErr=m=>{err.textContent=m;err.hidden=false};
+form.addEventListener("submit",async e=>{
+  e.preventDefault();err.hidden=true;
+  const name=nm.value.trim(),a=form.elements["attending"].value;
+  $("subj").value=`RSVP: ${name} (${a})`;
+  btn.disabled=true;btn.textContent="Sending…";
+  try{
+    const r=await fetch(form.action,{method:"POST",body:new FormData(form),headers:{Accept:"application/json"}});
+    if(r.ok){
+      const y=a==="Yes";
+      $("tt").textContent=y?`We can’t wait to see you, ${name}.`:`We’ll miss you, ${name}.`;
+      $("tb").textContent=y?"You’re on the list for November 13.":"Thank you for letting us know.";
+      form.hidden=true;thanks.hidden=false;done=true;upd();$("tt").focus();
+    }else{
+      const d=await r.json().catch(()=>({}));
+      showErr((d.errors&&d.errors.map(x=>x.message).join(", "))||"Something went wrong, and your RSVP wasn’t sent. Please try again.");
+    }
+  }catch(x){showErr("We couldn’t reach the server. Check your connection and try again.")}
+  finally{btn.disabled=false;btn.textContent="Send RSVP"}
+});
+$("change").onclick=()=>{thanks.hidden=true;form.hidden=false;done=false;upd();nm.focus()};
+})();
+</script>
 </body>
 </html>
